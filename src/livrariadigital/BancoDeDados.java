@@ -11,8 +11,9 @@ public class BancoDeDados {
 	public ArrayList<Usuario> getUsuarioBD() {
 		return usuarioBD;
 	}
-	public void setUsuarioBD(ArrayList<Usuario> usuarioBD) {
+	public ArrayList<Usuario> addUsuarioBD(ArrayList<Usuario> usuarioBD) {
 		this.usuarioBD = usuarioBD;
+		return usuarioBD;
 	}
 	public ArrayList<Genero> getGeneroBD() {
 		return generoBD;
