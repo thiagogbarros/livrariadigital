@@ -1,3 +1,4 @@
+package livrariadigital;
 
 public class Editora {
 	private int id;

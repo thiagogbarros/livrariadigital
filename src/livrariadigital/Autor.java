@@ -1,4 +1,4 @@
-
+package livrariadigital;
 public class Autor extends Usuario {
 	private int id;
 
