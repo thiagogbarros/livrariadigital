@@ -1,23 +1,38 @@
 package livrariadigital;
 
+import java.util.ArrayList;
+
 public class Usuario {
+	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private int cpf;
 	private String nome;
 	private int idade;
 	private String endereco;
 	private int telefone;
 	private int cep;
-
-	public static Usuario criar() {
-		Usuario x = new Usuario();	
-		return x;
+	public Usuario(int id) {
+		this.setId(id);
+	}
+	public static ArrayList<Usuario> criarUsuario() {
+		ArrayList <Usuario> usuarioBD = BancoDeDados.createUsuarioBD();
+		int id = BancoDeDados.getLastIdUsuarioBD(usuarioBD);
+		Usuario usuario = new Usuario(id);
+		BancoDeDados.addUsuarioBD(usuarioBD, usuario);
+		return usuarioBD;
 	}
 	
-	void excluir(Usuario x) {
+	public void excluir(Usuario x) {
 		x = null;	//nao haverá referencia para o objeto, logo sera deletado pelo garbage collector.
 	}
 	
-	void consultar(Usuario x) {
+	public void consultarPerfil(Usuario x) {
 		System.out.printf("CPF: \n",x.getCpf());
 		System.out.printf("NOME: \n",x.getNome());
 		System.out.printf("IDADE: \n",x.getIdade());
@@ -25,6 +40,7 @@ public class Usuario {
 		System.out.printf("TELEFONE: \n",x.getTelefone());
 		System.out.printf("CEP: \n",x.getCep());
 	}
+	
 
 	public int getCpf() {
 		return cpf;
