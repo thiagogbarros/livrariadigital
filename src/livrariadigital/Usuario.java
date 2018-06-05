@@ -1,6 +1,7 @@
 package livrariadigital;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Usuario {
 	private int id;
@@ -17,28 +18,45 @@ public class Usuario {
 	private String endereco;
 	private int telefone;
 	private int cep;
-	public Usuario(int id) {
-		this.setId(id);
-	}
+	
 	public static ArrayList<Usuario> criarUsuario() {
 		ArrayList <Usuario> usuarioBD = BancoDeDados.createUsuarioBD();
 		int id = BancoDeDados.getLastIdUsuarioBD(usuarioBD);
-		Usuario usuario = new Usuario(id);
+		Usuario usuario = new Usuario();
 		BancoDeDados.addUsuarioBD(usuarioBD, usuario);
 		return usuarioBD;
 	}
 	
-	public void excluir(Usuario x) {
-		x = null;	//nao haverá referencia para o objeto, logo sera deletado pelo garbage collector.
+	public ArrayList<Usuario> excluir(ArrayList<Usuario> usuarioBD,Usuario usuario) {
+		usuarioBD.remove(usuario.getId());
+		return usuarioBD;
 	}
 	
-	public void consultarPerfil(Usuario x) {
-		System.out.printf("CPF: \n",x.getCpf());
-		System.out.printf("NOME: \n",x.getNome());
-		System.out.printf("IDADE: \n",x.getIdade());
-		System.out.printf("ENDERECO: \n",x.getEndereco());
-		System.out.printf("TELEFONE: \n",x.getTelefone());
-		System.out.printf("CEP: \n",x.getCep());
+	public void consultarPerfil() {
+		System.out.printf("CPF: \n",this.getCpf());
+		System.out.printf("NOME: \n",this.getNome());
+		System.out.printf("IDADE: \n",this.getIdade());
+		System.out.printf("ENDERECO: \n",this.getEndereco());
+		System.out.printf("TELEFONE: \n",this.getTelefone());
+		System.out.printf("CEP: \n",this.getCep());
+	}
+	
+	public void editarPerfil() {
+		Scanner sc = new Scanner(System.in);
+		System.out.printf("CPF: \n");
+		this.setCpf(sc.nextInt());
+		
+		System.out.printf("NOME: \n");
+		this.setNome(sc.next());
+		System.out.printf("IDADE: \n");
+		this.setCpf(sc.nextInt());
+		System.out.printf("ENDERECO: \n");
+		this.setEndereco(sc.next());
+		System.out.printf("TELEFONE: \n");
+		this.setTelefone(sc.nextInt());
+		System.out.printf("CEP: \n");
+		this.setCep(sc.nextInt());
+		sc.close();
 	}
 	
 

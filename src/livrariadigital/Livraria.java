@@ -3,8 +3,9 @@ package livrariadigital;
 public class Livraria {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Usuario usuario = new Usuario();
+		usuario.editarPerfil();
+		usuario.consultarPerfil();
 	}
 
 }

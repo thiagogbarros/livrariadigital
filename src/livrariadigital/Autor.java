@@ -1,8 +1,6 @@
 package livrariadigital;
 public class Autor extends Usuario {
-	public Autor(int id) {
-		super(id);
-	}
+
 	private int id;
 	
 	
